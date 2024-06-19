@@ -2,10 +2,12 @@ from django.db import models
 
 
 class Client(models.Model):
-    id = models.CharField(max_length=100, primary_key=True)
+    id = models.AutoField(primary_key=True)
     nom = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
-    historiqueTrajets = models.TextField()
+    password = models.CharField(max_length=256,default='default_password')
+    historiqueTrajets = models.TextField(blank=True,null=True)
+    commentaires = models.TextField(blank=True, null=True)
     estConducteur = models.BooleanField(default=False)
 
     def modifierInformationsCompte(self):

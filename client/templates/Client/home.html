@@ -1,11 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - Covoiturage</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'client/css/styles.css' %}">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'Client/css/styles.css' %}">
 </head>
 <body>
     <header>
@@ -15,31 +15,28 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Rechercher</a></li>
-                    <li><a href="#">Publier un trajet</a></li>
-                    <li><a href="#">Connexion</a></li>
+                    <li><a href="{% url 'recherche' %}">Rechercher</a></li>
+                    <li><a href="{% if request.session.client_id %}{% url 'publier_trajet' %}{% else %}{% url 'connexion' %}{% endif %}">Publier un trajet</a></li>
+                    {% if request.session.client_id %}
+                        <li><a href="{% url 'deconnexion' %}">Déconnexion</a></li>
+                    {% else %}
+                        <li><a href="{% url 'connexion' %}">Connexion</a></li>
+                        <li><a href="{% url 'inscription' %}">Inscription</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
     </header>
-    <section class="hero">
-        <div class="container">
-            <h2>La route des vacances, pas des dépenses</h2>
-            <form action="" method="GET">
-                <div class="search-box">
-                    <input type="text" name="departure" placeholder="Départ">
-                    <input type="text" name="destination" placeholder="Destination">
-                    <input type="date" name="date" placeholder="Aujourd'hui">
-                    <input type="number" name="passenger" placeholder="1 passager">
-                    <button type="submit">Rechercher</button>
-                </div>
-            </form>
-        </div>
-    </section>
+    <div class="main-content">
+        <form class="search-box" action="{% url 'recherche' %}" method="get">
+            <input type="text" name="pointDepart" placeholder="Départ">
+            <input type="text" name="pointArrivee" placeholder="Destination">
+            <input type="date" name="date" placeholder="jj/mm/aaaa">
+            <button type="submit">Rechercher</button>
+        </form>
+    </div>
     <footer>
-        <div class="container">
-            <p>&copy; 2023 Covoiturage. Tous droits réservés.</p>
-        </div>
+        <p>© 2023 Covoiturage. Tous droits réservés.</p>
     </footer>
 </body>
 </html>

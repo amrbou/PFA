@@ -4,12 +4,13 @@ from django.db import models
 from client.models import Client
 
 class Trajet(models.Model):
-    id = models.CharField(max_length=100, primary_key=True)
     pointDepart = models.CharField(max_length=100)
     pointArrivee = models.CharField(max_length=100)
     date = models.DateField()
     heure = models.TimeField()
+    nbPersonnes = models.IntegerField(default=0)  # Nombre de places disponibles incluant le conducteur
     IDClientConducteur = models.ForeignKey(Client, on_delete=models.CASCADE, related_name='trajets_conducteur')
+    passagers = models.ManyToManyField(Client, related_name='trajets_passager', blank=True)  # Champ pour les passagers
 
     def ajouter(self):
         pass

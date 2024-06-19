@@ -23,7 +23,6 @@ urlpatterns = [
     path('client/', include('client.urls')),
     path('trajet/', include('trajet.urls')),
     path('commentaire/', include('commentaire.urls')),
-    path('visiteur/', include('visiteur.urls')),
     path('administrateur/', include('administrateur.urls')),
-    path('', client_views.home, name='home'),
+    path('', include('client.urls')),
 ]
