@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Covoiturage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'client/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Covoiturage</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Rechercher</a></li>
+                    <li><a href="#">Publier un trajet</a></li>
+                    <li><a href="#">Connexion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <h2>La route des vacances, pas des dépenses</h2>
+            <form action="" method="GET">
+                <div class="search-box">
+                    <input type="text" name="departure" placeholder="Départ">
+                    <input type="text" name="destination" placeholder="Destination">
+                    <input type="date" name="date" placeholder="Aujourd'hui">
+                    <input type="number" name="passenger" placeholder="1 passager">
+                    <button type="submit">Rechercher</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Covoiturage. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
