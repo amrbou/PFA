@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <link rel="stylesheet" href="{% static 'Client/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'Client/css/forms.css' %}">
 </head>
 <body>
     <header>
@@ -16,16 +16,16 @@
             <nav>
                 <ul>
                     <li><a href="{% url 'home' %}">Accueil</a></li>
-                    <li><a href="#">Connexion</a></li>
+                    <li><a href="{% url 'connexion' %}">Connexion</a></li>
                     <li><a href="{% url 'inscription' %}">Inscription</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <div class="main-content">
-        <h2>Inscription</h2>
         <form method="post">
             {% csrf_token %}
+            <h2>Inscription</h2>
             {{ form.as_p }}
             <button type="submit">S'inscrire</button>
         </form>

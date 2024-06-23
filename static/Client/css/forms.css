@@ -1,0 +1,261 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-image: url('/static/images/covoitureurs.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Ensure body covers the full viewport height */
+}
+
+header {
+    background-color: #007bff; 
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 24px;
+    position: relative;
+    z-index: 10;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    padding: 0 15px;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the start to move the search box up */
+    height: calc(100vh - 80px); /* Adjust according to header height */
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    padding-top: 50px; /* Add padding to move the search box down slightly */
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for better readability */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.search-box input, .search-box button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.search-box input {
+    flex: 1;
+}
+
+.search-box button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e7e7e7;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 10;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .search-box {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .search-box input, .search-box button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+
+/* Style for search results */
+.search-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    z-index: 10; /* Ensure search results are above the background image */
+}
+
+.search-results ul {
+    list-style: none;
+    padding: 0;
+    width: 80%;
+}
+
+.search-results li {
+    background-color: rgba(255, 255, 255, 0.8); /* White with transparency */
+    border: 2px solid white; /* White border */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.search-results li:hover {
+    transform: translateY(-5px);
+}
+
+.search-results h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #007bff;
+    text-align: center;
+}
+
+/* Add this rule to ensure the results container is above the background image */
+.main-content {
+    position: relative;
+    z-index: 5;
+}
+
+.search-results {
+    position: relative;
+    z-index: 10;
+}
+
+.reserve-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.reserve-button:hover {
+    background-color: #218838;
+}
+
+form {
+    background: rgba(173, 216, 230, 0.8); /* Bleu ciel transparent */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px; /* Espace entre le titre et le formulaire */
+}
+
+form h2 {
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+form .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+form .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form .form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form .form-group button:hover {
+    background-color: #0056b3;
+}
+
+.messages {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.messages .message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.messages .message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.messages .message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+
+.error-message {
+    color: #ff0000;
+    margin-top: 10px;
+}
+

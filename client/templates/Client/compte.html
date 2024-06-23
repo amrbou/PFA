@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title>Mon Compte</title>
     <link rel="stylesheet" href="{% static 'Client/css/forms.css' %}">
 </head>
 <body>
@@ -16,18 +16,20 @@
             <nav>
                 <ul>
                     <li><a href="{% url 'home' %}">Accueil</a></li>
-                    <li><a href="{% url 'connexion' %}">Connexion</a></li>
-                    <li><a href="{% url 'inscription' %}">Inscription</a></li>
+                    <li><a href="{% url 'deconnexion' %}">Déconnexion</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <div class="main-content">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <h2>Connexion</h2>
+            <h2>Mon Compte</h2>
             {{ form.as_p }}
-            <button type="submit">Se connecter</button>
+            {% if error_message %}
+                <div class="error-message">{{ error_message }}</div>
+            {% endif %}
+            <button type="submit">Mettre à jour</button>
         </form>
     </div>
     <footer>

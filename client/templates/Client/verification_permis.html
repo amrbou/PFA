@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérification des Permis de Conduire</title>
+</head>
+<body>
+    <h1>Vérification des Permis de Conduire</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Permis de Conduire</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.nom }}</td>
+                    <td>{{ client.email }}</td>
+                    <td><a href="{{ client.permis_conduire.url }}" target="_blank">Voir Permis</a></td>
+                    <td>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="client_id" value="{{ client.id }}">
+                            <button type="submit">Valider</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
