@@ -22,15 +22,17 @@
         </div>
     </header>
     <div class="main-content">
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <h2>Mon Compte</h2>
-            {{ form.as_p }}
-            {% if error_message %}
-                <div class="error-message">{{ error_message }}</div>
-            {% endif %}
-            <button type="submit">Mettre à jour</button>
-        </form>
+        <div class="container">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2>Mon Compte</h2>
+                {{ form.as_p }}
+                {% if error_message %}
+                    <div class="error-message">{{ error_message }}</div>
+                {% endif %}
+                <button type="submit">Mettre à jour</button>
+            </form>
+        </div>
     </div>
     <footer>
         <p>© 2023 Covoiturage. Tous droits réservés.</p>

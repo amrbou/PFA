@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publier un Trajet</title>
-    <link rel="stylesheet" href="{% static 'Client/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'Client/css/forms.css' %}">
 </head>
 <body>
     <header>
@@ -17,6 +17,7 @@
                 <ul>
                     <li><a href="{% url 'home' %}">Accueil</a></li>
                     {% if request.session.client_id %}
+                        <li><a href="{% url 'compte' %}">Compte</a></li>
                         <li><a href="{% url 'deconnexion' %}">Déconnexion</a></li>
                     {% else %}
                         <li><a href="{% url 'connexion' %}">Connexion</a></li>

@@ -6,6 +6,8 @@ class Client(models.Model):
     nom = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=256,default='default_password')
+    phone = models.CharField(max_length=15, blank=True)
+    profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True)
     historiqueTrajets = models.TextField(blank=True,null=True)
     commentaires = models.TextField(blank=True, null=True)
     estConducteur = models.BooleanField(default=False)

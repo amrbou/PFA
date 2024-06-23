@@ -29,4 +29,6 @@ class CompteForm(forms.ModelForm):
 
     class Meta:
         model = Client
-        fields = ['nom', 'email', 'password', 'permis_conduire']
+        fields = ['nom', 'email', 'password', 'permis_conduire', 'phone', 'profile_picture']
+
+    

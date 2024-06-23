@@ -10,4 +10,5 @@ urlpatterns = [
     path('deconnexion/', views.deconnexion, name='deconnexion'),
     path('compte/', views.compte, name='compte'),
     path('mes_trajets/', views.mes_trajets, name='mes_trajets'),
+     path('annuler_trajet/<int:trajet_id>/', views.annuler_trajet, name='annuler_trajet'),
 ]

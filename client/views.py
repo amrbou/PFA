@@ -76,5 +76,21 @@ def mes_trajets(request):
     if not client_id:
         return redirect('connexion')
     
+    client = Client.objects.get(id=client_id)
     trajets = Trajet.objects.filter(passagers=client_id)
     return render(request, 'client/mes_trajets.html', {'trajets': trajets})
+
+def annuler_trajet(request, trajet_id):
+    client_id = request.session.get('client_id')
+    if not client_id:
+        return redirect('connexion')
+    
+    client = Client.objects.get(id=client_id)
+    trajet = Trajet.objects.get(id=trajet_id)
+    
+    if client in trajet.passagers.all():
+        trajet.passagers.remove(client)
+        trajet.nbPersonnes -= 1
+        trajet.save()
+    
+    return redirect('mes_trajets')

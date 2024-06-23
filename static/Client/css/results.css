@@ -121,3 +121,18 @@ h1 {
         width: 90%;
     }
 }
+
+.cancel-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.cancel-button:hover {
+    background-color: #c82333;
+}

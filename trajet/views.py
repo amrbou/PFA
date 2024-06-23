@@ -37,14 +37,21 @@ def publier_trajet(request):
     if not client_id:
         return redirect('connexion')
 
+    client = get_object_or_404(Client, id=client_id)
+    if not client.estConducteur:
+        return redirect('error_not_conductor')  
+
     if request.method == 'POST':
         form = TrajetForm(request.POST)
         if form.is_valid():
             trajet = form.save(commit=False)
-            trajet.IDClientConducteur = get_object_or_404(Client, id=client_id)
+            trajet.IDClientConducteur = client
             trajet.save()
             return redirect('home')
     else:
         form = TrajetForm()
 
     return render(request, 'trajet/publier_trajet.html', {'form': form})
+
+def error_not_conductor(request):
+    return render(request, 'trajet/error_not_conductor.html')
