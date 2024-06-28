@@ -184,4 +184,38 @@ footer p {
     background-color: #218838;
 }
 
+.staff-button {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.staff-button a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.staff-login {
+    font-size: 12px;
+    color: #000;
+    text-decoration: none;
+}
+
+.staff-login:hover {
+    text-decoration: underline;
+}
 

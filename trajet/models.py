@@ -20,5 +20,6 @@ class Trajet(models.Model):
     
     def supprimer(self):
         pass
+    
     def __str__(self):
         return f'Trajet de {self.pointDepart} à {self.pointArrivee} le {self.date}'

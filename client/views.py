@@ -94,3 +94,17 @@ def annuler_trajet(request, trajet_id):
         trajet.save()
     
     return redirect('mes_trajets')
+
+def staff_login(request):
+    error_message = None
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        if username == 'admin' and password == 'admin':  
+            request.session['is_staff'] = True
+            return redirect('verification_permis')
+        else:
+            error_message = "Nom utilisateur ou mot de passe invalide"
+
+    return render(request, 'client/staff_login.html', {'error_message': error_message})

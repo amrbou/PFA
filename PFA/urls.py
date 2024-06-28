@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from client import views as client_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
      path('admin/', admin.site.urls),
@@ -25,4 +27,6 @@ urlpatterns = [
     path('commentaire/', include('commentaire.urls')),
     path('administrateur/', include('administrateur.urls')),
     path('', include('client.urls')),
-]
+    path('staffCa/', include('staffCa.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

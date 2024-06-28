@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gérer Profil Client</title>
+    <link rel="stylesheet" href="{% static 'Client/css/dashboard.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Gérer Profil Client</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'admin_dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'staff_logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main-content">
+        <div class="profile-container">
+            <h2>Profil de {{ client.nom }}</h2>
+            <p>Email: {{ client.email }}</p>
+            {% if client.permis_conduire %}
+                <img src="{{ client.permis_conduire.url }}" alt="Permis de conduire de {{ client.nom }}">
+            {% else %}
+                <p>Aucune photo de permis de conduire disponible.</p>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <label>
+                    <input type="checkbox" name="estConducteur" {% if client.estConducteur %}checked{% endif %}>
+                    Confirmer comme conducteur
+                </label>
+                <button type="submit">Mettre à jour</button>
+            </form>
+        </div>
+        <div class="trajets-container">
+            <h2>Trajets où {{ client.nom }} est Conducteur</h2>
+            <div class="trajets-scrollable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Départ</th>
+                            <th>Arrivée</th>
+                            <th>Date</th>
+                            <th>Heure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for trajet in trajets_conducteur %}
+                        <tr>
+                            <td>{{ trajet.pointDepart }}</td>
+                            <td>{{ trajet.pointArrivee }}</td>
+                            <td>{{ trajet.date }}</td>
+                            <td>{{ trajet.heure }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="trajets-container">
+            <h2>Trajets où {{ client.nom }} est Passager</h2>
+            <div class="trajets-scrollable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Départ</th>
+                            <th>Arrivée</th>
+                            <th>Date</th>
+                            <th>Heure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for trajet in trajets_passager %}
+                        <tr>
+                            <td>{{ trajet.pointDepart }}</td>
+                            <td>{{ trajet.pointArrivee }}</td>
+                            <td>{{ trajet.date }}</td>
+                            <td>{{ trajet.heure }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>© 2023 Admin Dashboard. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

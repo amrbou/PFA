@@ -11,4 +11,5 @@ urlpatterns = [
     path('compte/', views.compte, name='compte'),
     path('mes_trajets/', views.mes_trajets, name='mes_trajets'),
      path('annuler_trajet/<int:trajet_id>/', views.annuler_trajet, name='annuler_trajet'),
+      path('staff_login/', views.staff_login, name='staff_login'),
 ]

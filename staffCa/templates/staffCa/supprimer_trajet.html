@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supprimer Trajet</title>
+    <link rel="stylesheet" href="{% static 'Client/css/dashboard.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Supprimer Trajet</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'admin_dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'staff_logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main-content">
+        <h2>Voulez-vous vraiment supprimer ce trajet ?</h2>
+        <p><strong>Départ:</strong> {{ trajet.pointDepart }}</p>
+        <p><strong>Arrivée:</strong> {{ trajet.pointArrivee }}</p>
+        <p><strong>Date:</strong> {{ trajet.date }}</p>
+        <p><strong>Heure:</strong> {{ trajet.heure }}</p>
+        <p><strong>Nombre de Personnes:</strong> {{ trajet.nbPersonnes }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Supprimer</button>
+        </form>
+        <a href="{% url 'admin_dashboard' %}">Annuler</a>
+    </div>
+    <footer>
+        <p>© 2023 Admin Dashboard. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

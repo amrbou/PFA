@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'commentaire',
     'visiteur',
     'administrateur',
+    'staffCa',
+    
 ]
 
 MIDDLEWARE = [
@@ -107,6 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -140,3 +143,6 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     messages.ERROR: 'error',
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

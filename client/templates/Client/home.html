@@ -30,6 +30,13 @@
         </div>
     </header>
     <div class="main-content">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
         <form class="search-box" action="{% url 'recherche' %}" method="get">
             <input type="text" name="pointDepart" placeholder="Départ">
             <input type="text" name="pointArrivee" placeholder="Destination">
@@ -39,6 +46,9 @@
     </div>
     <footer>
         <p>© 2023 Covoiturage. Tous droits réservés.</p>
+        <div class="staff-login">
+            <a href="{% url 'staff_login' %}">STAFF</a>
+        </div>
     </footer>
 </body>
 </html>

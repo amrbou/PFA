@@ -1,0 +1,216 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-image: url('/static/images/compacte2.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 24px;
+    position: relative;
+    z-index: 10;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    padding: 0 15px;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.main-content {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+.main-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+    background-color: #ddd;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons a {
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.action-buttons a.modifier {
+    background-color: #007bff;
+    border: 2px solid #007bff;
+}
+
+.action-buttons a.modifier:hover {
+    background-color: #0056b3;
+}
+
+.action-buttons a.supprimer {
+    background-color: #dc3545;
+    border: 2px solid #dc3545;
+}
+
+.action-buttons a.supprimer:hover {
+    background-color: #c82333;
+}
+
+.supprimer {
+    background-color: #dc3545;
+    border: 2px solid #dc3545;
+}
+
+.supprimer:hover {
+    background-color: #c82333;
+}
+
+.gerer {
+    background-color: #28a745;
+    border: 2px solid #28a745;
+    color: white;
+}
+
+.gerer:hover {
+    background-color: #218838;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e7e7e7;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+.profile-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+.profile-container img {
+    max-width: 100%;
+    max-height: 300px;  
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+}
+
+.profile-container label {
+    display: block;
+    margin-top: 20px;
+}
+
+.profile-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.profile-container button:hover {
+    background-color: #0056b3;
+}
+
+.action-buttons a.suspendre {
+    background-color: #ffc107;
+    border: 2px solid #ffc107;
+}
+
+.action-buttons a.suspendre:hover {
+    background-color: #e0a800;
+}
+
+.action-buttons a.bannir {
+    background-color: #dc3545;
+    border: 2px solid #dc3545;
+}
+
+.action-buttons a.bannir:hover {
+    background-color: #c82333;
+}

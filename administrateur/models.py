@@ -4,6 +4,7 @@ class Administrateur(models.Model):
     id = models.CharField(max_length=100, primary_key=True)
     nomAdmin = models.CharField(max_length=100)
     emailAdmin = models.EmailField(unique=True)
+    password = models.CharField(default='defaultAdminPass',max_length=128)
 
     def authentifier(self):
         pass

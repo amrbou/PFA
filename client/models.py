@@ -12,6 +12,7 @@ class Client(models.Model):
     commentaires = models.TextField(blank=True, null=True)
     estConducteur = models.BooleanField(default=False)
     permis_conduire = models.FileField(upload_to='permis_conduire/', null=True, blank=True)
+    is_active = models.BooleanField(default=True)
 
     def modifierInformationsCompte(self):
         pass

@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'Client/css/dashboard.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Admin Dashboard</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Accueil</a></li>
+                    <li><a href="{% url 'staff_logout' %}">Déconnexion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main-content">
+        <h2>Bienvenue sur le tableau de bord administrateur</h2>
+        <h2>Liste des Trajets</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Départ</th>
+                    <th>Arrivée</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Nombre de Personnes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trajet in trajets %}
+                <tr>
+                    <td>{{ trajet.pointDepart }}</td>
+                    <td>{{ trajet.pointArrivee }}</td>
+                    <td>{{ trajet.date }}</td>
+                    <td>{{ trajet.heure }}</td>
+                    <td>{{ trajet.nbPersonnes }}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <a href="{% url 'modifier_trajet' trajet.id %}" class="modifier">Modifier</a>
+                            <a href="{% url 'supprimer_trajet' trajet.id %}" class="supprimer">Supprimer</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Liste des Clients</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                <tr>
+                    <td>{{ client.nom }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <a href="{% url 'gerer_profil_client' client.id %}" class="gerer">Gérer Profil Client</a>
+                            <a href="{% url 'suspendre_client' client.id %}" class="suspendre">
+                                {% if client.is_active %}
+                                    Suspendre
+                                {% else %}
+                                    Libérer
+                                {% endif %}
+                            </a>
+                            <a href="{% url 'bannir_client' client.id %}" class="bannir">Bannir</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <p>© 2023 Admin Dashboard. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
