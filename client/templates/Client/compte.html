@@ -11,30 +11,39 @@
     <header>
         <div class="container">
             <div class="logo">
-                <h1>Covoiturage</h1>
+                <h1>Mon Compte</h1>
             </div>
             <nav>
                 <ul>
                     <li><a href="{% url 'home' %}">Accueil</a></li>
-                    <li><a href="{% url 'deconnexion' %}">Déconnexion</a></li>
+                    <li><a href="{% url 'publier_trajet' %}">Publier un trajet</a></li>
+                    {% if request.session.client_id %}
+                        <li><a href="{% url 'mes_trajets' %}">Mes trajets</a></li>
+                        <li><a href="{% url 'deconnexion' %}">Déconnexion</a></li>
+                    {% else %}
+                        <li><a href="{% url 'connexion' %}">Connexion</a></li>
+                        <li><a href="{% url 'inscription' %}">Inscription</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
     </header>
     <div class="main-content">
-        <div class="container">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <h2>Mon Compte</h2>
-                {{ form.as_p }}
-                {% if error_message %}
-                    <div class="error-message">{{ error_message }}</div>
-                {% endif %}
-                <button type="submit">Mettre à jour</button>
-            </form>
-        </div>
+        <h1>Mon Compte</h1>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Mettre à jour</button>
+        </form>
     </div>
-    <footer>
+    <footer class="footer">
         <p>© 2023 Covoiturage. Tous droits réservés.</p>
     </footer>
 </body>

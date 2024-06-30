@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annuler Trajet</title>
+    <link rel="stylesheet" href="{% static 'Client/css/forms.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Annuler Trajet</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Accueil</a></li>
+                    <li><a href="{% url 'mes_trajets' %}">Mes trajets</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main-content">
+        <h2>Êtes-vous sûr de vouloir annuler ce trajet?</h2>
+        <p>Départ: {{ trajet.pointDepart }}</p>
+        <p>Arrivée: {{ trajet.pointArrivee }}</p>
+        <p>Date: {{ trajet.date }}</p>
+        <p>Heure: {{ trajet.heure }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Annuler Trajet</button>
+        </form>
+    </div>
+    <footer>
+        <p>© 2023 Covoiturage. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

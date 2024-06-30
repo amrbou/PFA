@@ -37,9 +37,14 @@
                 <strong>Arrivée:</strong> {{ trajet.pointArrivee }}<br>
                 <strong>Date:</strong> {{ trajet.date }}<br>
                 <strong>Heure:</strong> {{ trajet.heure }}<br>
+                <strong>Conducteur:</strong> {{ trajet.IDClientConducteur.nom }}<br>
+                <strong>Téléphone du Conducteur:</strong> {{ trajet.IDClientConducteur.phone }}<br>
                 <form action="{% url 'annuler_trajet' trajet.id %}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="cancel-button">Annuler</button>
+                </form>
+                <form action="{% url 'changer_destination' trajet.id %}" method="get">
+                    <button type="submit" class="modify-button">Modifier</button>
                 </form>
             </div>
             {% endfor %}

@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Trajet</title>
+    <link rel="stylesheet" href="{% static 'Client/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Accueil</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main-content">
+        <h2>Trajet de {{ trajet.pointDepart }} à {{ trajet.pointArrivee }}</h2>
+        <p><strong>Date :</strong> {{ trajet.date }}</p>
+        <p><strong>Heure :</strong> {{ trajet.heure }}</p>
+        <h3>Commentaires</h3>
+        <div class="commentaires-list">
+            {% for commentaire in commentaires %}
+            <div class="commentaire-item">
+                <strong>{{ commentaire.auteur.nom }} :</strong> {{ commentaire.texte }}<br>
+                <em>{{ commentaire.date }}</em>
+            </div>
+            {% endfor %}
+        </div>
+        <h3>Ajouter un Commentaire</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Ajouter</button>
+        </form>
+    </div>
+</body>
+</html>

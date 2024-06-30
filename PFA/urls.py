@@ -28,5 +28,9 @@ urlpatterns = [
     path('administrateur/', include('administrateur.urls')),
     path('', include('client.urls')),
     path('staffCa/', include('staffCa.urls')),
+    path('historiqueAction/', include('historiqueAction.urls')),
+    
+    
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

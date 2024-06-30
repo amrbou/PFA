@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'visiteur',
     'administrateur',
     'staffCa',
+    'historiqueAction',
+    
     
 ]
 

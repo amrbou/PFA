@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique des Actions</title>
+    <link rel="stylesheet" href="{% static 'Client/css/dashboard.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Historique des Actions</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Accueil</a></li>
+                    <li><a href="{% url 'compte' %}">Mon Compte</a></li>
+                    <li><a href="{% url 'mes_trajets' %}">Mes Trajets</a></li>
+                    <li><a href="{% url 'publier_trajet' %}">Publier un Trajet</a></li>
+                    <li><a href="{% url 'deconnexion' %}">Déconnexion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main-content">
+        <h2>Historique des Actions</h2>
+        <div class="notifications">
+            {% if historique_actions %}
+                <ul>
+                    {% for historique in historique_actions %}
+                        <li>{{ historique.message }} - <em>{{ historique.created_at }}</em></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Aucune notification disponible.</p>
+            {% endif %}
+        </div>
+    </div>
+    <footer>
+        <p>© 2023 Covoiturage. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
