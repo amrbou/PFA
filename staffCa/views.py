@@ -72,7 +72,7 @@ def supprimer_trajet(request, trajet_id):
 
     trajet = get_object_or_404(Trajet, id=trajet_id)
     if request.method == 'POST':
-        trajet.delete()
+       
         HistoriqueAction.objects.create(
             client=trajet.IDClientConducteur,
             message=f'Votre trajet de {trajet.pointDepart} à {trajet.pointArrivee} a été supprimé.'
@@ -82,6 +82,9 @@ def supprimer_trajet(request, trajet_id):
                 client=passager,
                 message=f'Le trajet de {trajet.pointDepart} à {trajet.pointArrivee} auquel vous participiez a été supprimé.'
             )
+
+       
+        trajet.delete()
         return redirect('admin_dashboard')
 
     return render(request, 'staffCa/supprimer_trajet.html', {'trajet': trajet})

@@ -25,19 +25,26 @@ def reserver(request, trajet_id):
     
     trajet = get_object_or_404(Trajet, id=trajet_id)
     
+    if trajet.IDClientConducteur.id == client_id:
+        messages.error(request, "Vous ne pouvez pas réserver votre propre trajet.")
+        return redirect('home')
+    
     if trajet.passagers.filter(id=client_id).exists():
         messages.error(request, "Vous avez déjà réservé ce trajet.")
         return redirect('home')
 
-    if trajet.est_complet():
+    if trajet.nbPersonnes <= 0:
         messages.error(request, "Ce trajet est complet. Il n'y a plus de places disponibles.")
         return redirect('home')
     
     if request.method == 'POST':
-        trajet.passagers.add(client)
-        trajet.nbPersonnes -= 1
-        trajet.save()
-        messages.success(request, "Vous avez réservé ce trajet avec succès.")
+        if trajet.nbPersonnes > 0:
+            trajet.passagers.add(client)
+            trajet.nbPersonnes -= 1
+            trajet.save()
+            messages.success(request, "Vous avez réservé ce trajet avec succès.")
+        else:
+            messages.error(request, "Ce trajet est complet. Il n'y a plus de places disponibles.")
         return redirect('home')
     
     return render(request, 'trajet/rechercher.html', {'trajet': trajet})
